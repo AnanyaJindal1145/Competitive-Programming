@@ -1,0 +1,4 @@
+Stacks
+https://leetcode.com/tag/monotonic-stack/discuss/3168516/A-general-approach-to-Stack-problems-in-C++-or-Generic-Template
+Monotonic stacks
+https://leetcode.com/tag/monotonic-stack/discuss/2347639/A-comprehensive-guide-and-template-for-monotonic-stack-based-problems
