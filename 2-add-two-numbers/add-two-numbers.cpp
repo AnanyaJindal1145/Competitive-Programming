@@ -11,26 +11,31 @@
 class Solution {
 public:
     ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
-        ListNode* head=new ListNode();
-        ListNode* temp=head;
+        ListNode* head= new ListNode(0);
+        ListNode* head2=head;
+        int curr_sum=0;
         int carry=0;
-        int sum=0;
-        while(l1!=NULL || l2!=NULL || carry!=0){
-            sum=0;
-            sum+=carry;
-            if(l1!=NULL){
-                sum+=l1->val;
-                l1=l1->next;
+        while(l1!= NULL || l2!= NULL){
+            if(l1!=NULL && l2!=NULL){
+                curr_sum=(l1->val+l2->val+carry)%10;
+                carry=(l1->val+l2->val+carry)/10;
+                head->next=new ListNode(curr_sum);
             }
-            if(l2!=NULL){
-                sum+=l2->val;
-                l2=l2->next;
+            else if(l2!=NULL){
+                curr_sum=(l2->val+carry)%10;
+                carry=(l2->val+carry)/10;
+                head->next=new ListNode(curr_sum);
             }
-            ListNode* curr=new ListNode(sum%10);
-            carry=sum/10;
-            temp->next=curr;
-            temp=temp->next;
+            else if(l1!=NULL){
+                curr_sum=(l1->val+carry)%10;
+                carry=(l1->val+carry)/10;
+                head->next=new ListNode(curr_sum);
+            }
+            if(l1!=NULL) l1=l1->next;
+            if(l2!=NULL) l2=l2->next;
+            head=head->next;
         }
-        return head->next;
+        if(carry==1) head->next=new ListNode(carry);
+        return head2->next;
     }
 };
